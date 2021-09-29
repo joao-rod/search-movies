@@ -1,5 +1,8 @@
 import React from 'react';
-import * as S from './styles'
+import { FiArrowRight } from 'react-icons/fi';
+
+import { Title } from '../../components/Title';
+import * as S from './styles';
 
 import Image1 from '../../assets/image1.jpg';
 import Image2 from '../../assets/image2.jpg';
@@ -11,61 +14,85 @@ import Image5 from '../../assets/image5.jpg';
 export const Home: React.FC = () => {
   return (
     <>
-      <S.Header><S.TitleSearch>Search</S.TitleSearch><S.TitleMovies>Movies</S.TitleMovies></S.Header>
+      <Title />
 
       <main>
         <S.Form>
-          <S.Input type="text" placeholder="Busque aqui" />
-          <S.Button>Search</S.Button>
+          <input placeholder="Digite aqui a sua busca..." />
+          <button type="submit">Search</button>
         </S.Form>
 
-        <S.Label>Sua busca retornou</S.Label>
-        <S.Line/>
+        <S.Label>
+          <h2>Sua busca retornou</h2>
+          <hr />
+        </S.Label>
 
         <S.PreviewResult>
-          <img src={Image1} alt="Capa" />
+          <a href="#">
+            <img src={Image1} alt="Capa" />
 
-          <div>
-            <h1>Titulo</h1>
-            <p>Elenco Principal</p>
-          </div>
+            <div>
+              <h1>Titulo</h1>
+              <p>Elenco Principal</p>
+            </div>
+
+            <FiArrowRight size={40} />
+          </a>
+
         </S.PreviewResult>
 
         <S.PreviewResult>
-          <img src={Image2} alt="Capa" />
+          <a href="#">
+            <img src={Image2} alt="Capa" />
 
-          <div>
-            <h1>Titulo</h1>
-            <p>Elenco Principal</p>
-          </div>
+            <div>
+              <h1>Titulo</h1>
+              <p>Elenco Principal</p>
+            </div>
+
+            <FiArrowRight size={40} />
+          </a>
         </S.PreviewResult>
 
         <S.PreviewResult>
-          <img src={Image3} alt="Capa" />
+          <a href="#">
+            <img src={Image3} alt="Capa" />
 
-          <div>
-            <h1>Titulo</h1>
-            <p>Elenco Principal</p>
-          </div>
+            <div>
+              <h1>Titulo</h1>
+              <p>Elenco Principal</p>
+            </div>
+
+            <FiArrowRight size={40} />
+          </a>
         </S.PreviewResult>
 
         <S.PreviewResult>
-          <img src={Image4} alt="Capa" />
+          <a href="#">
+            <img src={Image4} alt="Capa" />
 
-          <div>
-            <h1>Titulo</h1>
-            <p>Elenco Principal</p>
-          </div>
+            <div>
+              <h1>Titulo</h1>
+              <p>Elenco Principal</p>
+            </div>
+
+            <FiArrowRight size={40} />
+          </a>
         </S.PreviewResult>
 
         <S.PreviewResult>
-          <img src={Image5} alt="Capa" />
+          <a href="#">
+            <img src={Image5} alt="Capa" />
 
-          <div>
-            <h1>Titulo</h1>
-            <p>Elenco Principal</p>
-          </div>
+            <div>
+              <h1>Titulo</h1>
+              <p>Elenco Principal</p>
+            </div>
+
+            <FiArrowRight size={40} />
+          </a>
         </S.PreviewResult>
+        
       </main> 
     </>
   );

@@ -1,40 +1,37 @@
 import styled from 'styled-components';
-
-export const Header = styled.header`
-  display: flex;
-  justify-content: center;
-`;
-
-export const TitleSearch = styled.span`
-  font-size: 32px;
-  color: #CEBC7A;
-  font-weight: bold;
-`;
-
-export const TitleMovies = styled(TitleSearch)`
-  color: #7ACE87;
-`;
+import { shade } from 'polished';
 
 export const Form = styled.form`
-  margin-top: 50px;
   display: flex;
-  justify-content: center;
-`;
+  margin-top: 50px;
+  margin-left: 70px;
 
-export const Input = styled.input`
-  width: 730px;
-  height: 54px;
-  background: rgba(222, 193, 91, 0.51);
-  border: solid 1px rgba(222, 193, 91, 0.51);
-  border-radius: 10px;
+  input {
+    width: 730px;
+    height: 54px;
+    padding-left: 20px;
 
-  ::placeholder {
-    color: #e5e5e5;
-    font-family: cursive, sans-serif;
+    background: rgba(222, 193, 91, 0.51);
+    border: solid 1px rgba(222, 193, 91, 0.51);
+    border-radius: 10px;
+
+    font-size: 18px;
+
+    &::placeholder {
+      color: #E5E5E5;
+      font-size: 15px;
+      font-weight: normal;
+      font-style: italic;
+      font-family: cursive, sans-serif;
+    }
+
+    &:hover {
+      background: ${shade(0.1, 'rgba(222, 193, 91, 0.51)')};
+      transition: background-color 0.3s;
+    }
   }
-`;
 
-export const Button = styled.button`
+  button {
   height: 54px;
   width: 75px;
   margin-left: 20px;
@@ -43,52 +40,77 @@ export const Button = styled.button`
   border: solid 1px #7ACE87;
   border-radius: 10px;
 
-  color: #E5E5E5;
   font-weight: bold;
   font-size: 18px;
+
+  &:hover {
+    background: ${shade(0.1, '#7ACE87')};
+    transition: background-color 0.3s;
+  }
+}
 `;
 
-export const Label = styled.h2`
-  margin-top: 40px;
+export const Label = styled.div`
+  max-width: 830px;
+  flex: 0;
   margin-left: 70px;
 
-  color: #E5E5E5;
-`;
+  h2 {
+    margin-top: 40px;
+  }
 
-export const Line = styled.hr`
-  width: 830px;
-  margin-left: 70px;
+  hr {
+    max-width: 830px;
+  }
 `;
 
 export const PreviewResult = styled.div`
-  display: flex;
+  a {
+    display: flex;
+    margin-top: 25px;
+    height: 121px;
+    max-width: 830px;
+    margin-left: 70px;
 
-  margin-top: 25px;
-  height: 121px;
-  width: 830px;
-  margin-left: 70px;
+    flex: 1;
 
-  border-radius: 15px;
-  border: solid 1px rgba(158, 158, 158, 0.25);
-  background: rgba(158, 158, 158, 0.25);
-  color: #E5E5E5;
+    border-radius: 15px;
+    border: solid 1px rgba(158, 158, 158, 0.25);
+    background: rgba(158, 158, 158, 0.25);
+    color: #E5E5E5;
+    text-decoration: none;
 
-  img {
-    height: 110px;
-    width: 100px;
-    margin: auto 7px;
-    border-radius: 5px;
-  }
+    img {
+      height: 110px;
+      width: 100px;
+      margin: auto 7px;
+      border-radius: 5px;
+    }
 
-  h1 {
-    flex: 0;
-    margin: 10px 15px;
-    font-size: 25px;
-  }
+    div {
+      margin: 15px 15px;
+    }
 
-  p{
-    margin: 30px 15px 0;
-    font-size: 16px;
-  }
-  
+    h1 {
+      font-size: 24px;
+      font-weight: 600;
+    }
+
+    p{
+      margin-top: 25px;
+    }
+
+    align-items: center;
+    svg {
+      margin-left: auto;
+      margin-right: 25px;
+      border: solid 1px;
+      border-radius: 50%;
+    }
+
+    &:hover {
+      transform: translateX(10px);
+      transition: transform 0.3s;
+    }
+  }  
 `;

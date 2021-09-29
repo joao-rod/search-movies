@@ -14,6 +14,7 @@ export default createGlobalStyle`
   }
 
   body, input, button {
+    color: #E5E5E5;
     font: 16px Roboto, sans-serif;
   }
 
