@@ -37,7 +37,7 @@ export const Result: React.FC = () => {
         Lorem ipsum dolor sit amet, consectetur adipisicing elit.
         Voluptas neque nihil, est minima culpa maxime, nostrum 
         temporibus porro repellat rem nulla! Accusantium consequuntur
-        amet hic vitae quis possimus praesentium officia.
+        amet hic vitae quis possimus praesentium 
       </S.Presentation>
     </>
   );
