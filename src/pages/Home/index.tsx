@@ -1,42 +1,42 @@
 import React, { useState, FormEvent } from 'react';
-import { FiArrowRight } from 'react-icons/fi';
-import api from '../../services/api';
+import { FiArrowRightCircle } from 'react-icons/fi';
 
-import { Title } from '../../components/Title';
+import { Title } from '../../components/Title/index';
+import api from '../../services/api';
+import ImageErrorEmptyField from '../../assets/error_empty_field.png';
 import * as S from './styles';  
 
+type Movie = {
+  description: string;
+  id: string;
+  image: string;
+  title: string;
+}
+
 type Movies = {
-  results: [
-    {
-      description: string;
-      id: string;
-      image: string;
-      title: string;
-    }
-  ]
+  results: Movie[];
 }
 
 export const Home: React.FC = () => {
+  const [callPreview, setCallPreview] = useState(0);
   const [movie, setMovie] = useState('');
-  const [titles, setTitles] = useState<Movies[]>([]);
+  const [nameMovie, setNameMovie] = useState('');
+  const [titles, setTitles] = useState<Movies>({} as Movies);
 
   async function handleAddMovie(
     event: FormEvent<HTMLFormElement>
   ): Promise<void> {
     event.preventDefault();
-
-    let name = movie;    
-    if(name === "") {
-      // const response = await api.get(`pt-br/API/MostPopularMovies/k_we6um83s`);
-      // const result = response.data;
-      // console.log(result);
-      // setTitles([...titles, result])
-      // setMovie('');
-    } else {
-      const response = await api.get<Movies>(`pt-br/API/SearchMovie/k_we6um83s/${name}`);
+   
+    setNameMovie(movie);
+    if(movie.trim() !== "") {
+      const response = await api.get(`pt-br/API/SearchMovie/k_we6um83s/${movie}`);
       const result = response.data;
-      console.log(result);
-      setTitles([...titles, result]);
+      setTitles(result);
+      setCallPreview(1);
+      setMovie('');
+    } else {
+      setCallPreview(2);
       setMovie('');
     }
   }
@@ -45,47 +45,53 @@ export const Home: React.FC = () => {
     <>
       <Title />
 
-      <main>
+      <S.Container>
         <S.Form onSubmit={handleAddMovie}>
           <input 
             value={movie}
             onChange={e => setMovie(e.target.value)}
             placeholder="Digite aqui a sua busca..." 
           />
-          <button 
-            type="submit" 
-            onClick={() => setTitles([])}
-          >
+          <button type="submit">
             Search
           </button>
         </S.Form>
 
-        <S.PreviewResult>
+        {callPreview === 1 ? 
+          <S.PreviewResult>
+            <S.Label>
+              <h2>Você pesquisou por: "{nameMovie.toLocaleUpperCase()}"..</h2>
+              <hr />
+            </S.Label>
 
-          {
-            titles.map((title, i) => (
-              <div key={titles[0].results[i].id}>
-                <S.Label>
-                  <h2>Resultado(s) da sua busca...</h2>
-                  <hr />
-                </S.Label>
-  
-                <a href="teste">
-                  <img src={titles[0].results[i].image} alt={''} />
-  
-                  <div>
-                    <h1>{titles[0].results[i].title}</h1>
-                    <p>{titles[0].results[i].description.replace("aka", "")}</p>
-                  </div>
-  
-                  <FiArrowRight size={40} />
-                </a>
-              </div>
-            ))
-          }
+            {
+              titles?.results?.map((title) => (
+                <div key={title.id}>  
+                  <a href="teste">
+                    <img src={title.image} alt={''} />
+    
+                    <div>
+                      <h1>{title.title}</h1>
+                      <p>{title.description.replace("aka", "")}</p>
+                    </div>
+    
+                    <FiArrowRightCircle size={40} />
+                  </a>
+                </div>
+              ))
+            }
+          </S.PreviewResult> : null
+        }
 
-        </S.PreviewResult>
-      </main> 
+        {callPreview === 2 ? 
+          <S.EmptyField>
+            <p>
+              <img src={ImageErrorEmptyField} alt="Empty Field" />
+              Você deve digitar algo no campo acima!!
+            </p>
+          </S.EmptyField> : null
+        }
+      </S.Container>
     </>
   );
 }

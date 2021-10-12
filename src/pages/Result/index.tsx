@@ -1,8 +1,7 @@
 import React from 'react';
 
-import { Title } from '../../components/Title';
+import { Title } from '../../components/Title/index';
 import * as S from './styles';
-import Image1 from '../../assets/image1.jpg';
 
 export const Result: React.FC = () => {
   return (
@@ -15,7 +14,7 @@ export const Result: React.FC = () => {
       </S.Label>
 
       <S.Info>
-        <img src={Image1} alt="Capa" />
+        <img alt="Capa" />
 
         <div>
           <h2>Velozes e Furiosos 9</h2>

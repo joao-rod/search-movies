@@ -19,7 +19,7 @@ export default createGlobalStyle`
   }
 
   #root {
-    max-width: 1004px;
+    width: 100%;
     margin: 0 auto;
     padding: 50px 20px;
   }
@@ -27,5 +27,4 @@ export default createGlobalStyle`
   button {
     cursor: pointer;
   }
-
 `;
