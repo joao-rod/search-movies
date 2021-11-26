@@ -63,25 +63,28 @@ export const Home: React.FC = () => {
               <h2>Você pesquisou por: "{nameMovie.toLocaleUpperCase()}"..</h2>
               <hr />
             </S.Label>
-
             {
-              titles?.results?.map((title) => (
-                <div key={title.id}>  
-                  <a href="teste">
-                    <img src={title.image} alt={''} />
-    
-                    <div>
-                      <h1>{title.title}</h1>
-                      <p>{title.description.replace("aka", "")}</p>
-                    </div>
-    
-                    <FiArrowRightCircle size={40} />
-                  </a>
-                </div>
-              ))
+              titles.results.length !== 0 ?
+                titles?.results?.map((title) => (
+                  <div key={title.id}>  
+                    <a href="result">
+                      <img src={title.image} alt={''} />
+      
+                      <div>
+                        <h1>{title.title}</h1>
+                        <p>{title.description.replace("aka", "")}</p>
+                      </div>
+      
+                      <FiArrowRightCircle size={40} />
+                    </a>
+                  </div>
+                ))
+              : <S.EmptyField>
+                  <p>Nenhum resultado para sua pesquisa...</p>
+                </S.EmptyField>
             }
           </S.PreviewResult> : null
-        }
+        } 
 
         {callPreview === 2 ? 
           <S.EmptyField>

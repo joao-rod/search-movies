@@ -1,28 +1,35 @@
 import styled from 'styled-components';
 
+export const Container = styled.main`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
+
 export const Label = styled.div`
-  max-width: 830px;
-  flex: 0;
-  margin-left: 4.5rem;
+  width: 45rem;
 
   h2 {
     margin-top: 40px;
+    font-weight: normal;
   }
 
-  hr {
-    max-width: 830px;
+  @media(max-width: 767px) {
+    width: 24rem;
   }
 `;
 
 export const Info = styled.div`
   display: flex;
+  max-width: 44rem;
   margin-top: 40px;
-  padding-left: 4.5rem;
-  
+  /* padding-left: 4.5rem; */
+
   img {
-    height: 200px;
-    border: 1px solid rgba(158, 158, 158, 0.251);
-    border-radius: 15px;
+    height: 160px;
+    width: 125px;
+    border-radius: 5px;
   }
 
   div {
@@ -41,7 +48,8 @@ export const Info = styled.div`
 `;
 
 export const Presentation = styled.p`
-  margin: 50px 4.5rem 0;
+  max-width: 45rem;
+  margin: 2.5rem 4.5rem 0;
   font-size: 16px;
   text-indent: 40px;
   text-align: justify;  
